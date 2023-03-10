@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+<!-- displays a notice, which is likely a flash message that gets passed from the controller to the view.-->
+<h1>Friends List</h1>
+<% if user_signed_in? %>
+  <table class="table table-bordered table-dark table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>First name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <td>
+            <%= link_to friend.first_name, friend %>
+              
+            </td>
+          <td><%= friend.email %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.twitter %></td>
+          <td><%= link_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure you want to delete {friend.first_name}?' },class:"btn btn-secondary"%></td>
+          
+        </tr>
+     
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "New friend", new_friend_path ,class:"btn btn-outline-secondary"%>
+<% else %>
+<h1>Hello worldd</h1>
+this is my first real web page..
+<% end -%>
+
+
+
+
